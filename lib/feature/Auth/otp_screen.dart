@@ -22,7 +22,7 @@ class _OtpScreenState extends State<OtpScreen> {
           backgroundColor: Colors.blueAccent,
         ),
       );
-      Navigator.pushReplacementNamed(context, AppRoutes.login);
+      Navigator.pushReplacementNamed(context, AppRoutes.newPassword);
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(

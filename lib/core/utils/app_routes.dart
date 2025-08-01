@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:learn_managment1/feature/Auth/forget_password.dart';
+import 'package:learn_managment1/feature/Auth/forget_password_screen.dart';
 import 'package:learn_managment1/feature/Auth/login_screen.dart';
+import 'package:learn_managment1/feature/Auth/new_password_screen.dart';
 
 import '../../feature/Auth/otp_screen.dart';
 import '../../feature/splash/splash_screen.dart';
@@ -12,6 +13,7 @@ class AppRoutes {
   static const String login = '/login';
   static const String forget = '/forget_password';
   static const String otp = '/otp_screen';
+  static const String newPassword = '/new_password';
 
   // Add more route names here
 
@@ -25,6 +27,8 @@ class AppRoutes {
         return MaterialPageRoute(builder: (_) => const LoginScreen());
       case otp:
         return MaterialPageRoute(builder: (_) => const OtpScreen());
+      case newPassword:
+        return MaterialPageRoute(builder: (_) => const NewPasswordScreen());
       default:
         return MaterialPageRoute(
           builder:
