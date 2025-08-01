@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:learn_managment1/core/utils/app_routes.dart';
 import 'package:learn_managment1/core/widgets/custom_text_filed.dart';
 import 'package:learn_managment1/core/widgets/custom_button.dart';
 import '../../core/utils/assets.dart';
@@ -82,7 +83,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 SizedBox(height: size.height * 0.02),
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushNamed(context, AppRoutes.forget);
+                  },
                   child: Text(
                     "Forgot Password?",
                     style: TextStyle(

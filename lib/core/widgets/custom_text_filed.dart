@@ -5,6 +5,7 @@ class CustomTextFiled extends StatefulWidget {
   final IconData prefixIcon;
   final bool isPassword;
   final TextEditingController? controller;
+  final String? Function(String?)? validator;
 
   const CustomTextFiled({
     super.key,
@@ -12,6 +13,7 @@ class CustomTextFiled extends StatefulWidget {
     required this.prefixIcon,
     this.isPassword = false,
     this.controller,
+    this.validator,
   });
 
   @override
@@ -21,23 +23,27 @@ class CustomTextFiled extends StatefulWidget {
 class _CustomTextFiledState extends State<CustomTextFiled> {
   bool _obscureText = true;
 
-  String? _validator(String? value) {
-    if (value == null || value.isEmpty) {
-      return "This field is required";
-    }
-
-    if (widget.isPassword && value.length < 6) {
-      return "Password must be at least 6 characters";
-    }
-
-    return null; // Valid
-  }
-
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       controller: widget.controller,
-      validator: _validator,
+      validator:
+          widget.validator ??
+          (widget.isPassword
+              ? (value) {
+                if (value == null || value.isEmpty) {
+                  return "This field is required";
+                } else if (value.length < 6) {
+                  return "Password must be at least 6 characters";
+                }
+                return null;
+              }
+              : (value) {
+                if (value == null || value.isEmpty) {
+                  return "This field is required";
+                }
+                return null;
+              }),
       obscureText: widget.isPassword ? _obscureText : false,
       cursorColor: Colors.blueAccent,
       decoration: InputDecoration(
