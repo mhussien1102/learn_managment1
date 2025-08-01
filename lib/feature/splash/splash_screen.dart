@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../core/utils/app_routes.dart';
 import '../../core/utils/assets.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -100,7 +101,9 @@ class _SplashScreenState extends State<SplashScreen>
                   MaterialButton(
                     minWidth: 200,
                     height: 50,
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushReplacementNamed(context, AppRoutes.login);
+                    },
                     color: Colors.white,
                     shape: RoundedRectangleBorder(
                       side: const BorderSide(color: Colors.blueAccent),
