@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../core/utils/app_routes.dart';
 import '../../core/utils/assets.dart';
-import '../../core/utils/custom_button.dart';
+import '../../core/widgets/custom_button.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
