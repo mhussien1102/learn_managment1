@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:learn_managment1/core/widgets/custom_text_filed.dart';
 import '../../core/utils/assets.dart';
+import '../../core/utils/custom_button.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -49,22 +50,12 @@ class LoginScreen extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 height: 50,
-                child: ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.blueAccent,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                  ),
-                  child: Text(
-                    "Login",
-                    style: TextStyle(
-                      fontSize: size.width * 0.045,
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
+                child: CustomButton(
+                  text: "Login",
+                  onPressed: () {
+                    // Add login logic
+                  },
+                  fontSize: size.width * 0.045,
                 ),
               ),
               SizedBox(height: size.height * 0.02),

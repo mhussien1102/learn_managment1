@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../core/utils/app_routes.dart';
 import '../../core/utils/assets.dart';
+import '../../core/utils/custom_button.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -105,28 +106,22 @@ class _SplashScreenState extends State<SplashScreen>
                       ),
                     ),
                     SizedBox(height: size.height * 0.03),
-                    MaterialButton(
-                      minWidth: size.width * 0.5,
-                      height: 50,
+                    CustomButton(
+                      text: 'Get Started',
                       onPressed: () {
                         Navigator.pushReplacementNamed(
                           context,
                           AppRoutes.login,
                         );
                       },
-                      color: Colors.white,
-                      shape: RoundedRectangleBorder(
-                        side: const BorderSide(color: Colors.blueAccent),
-                        borderRadius: BorderRadius.circular(30),
-                      ),
-                      child: Text(
-                        "Get Started",
-                        style: TextStyle(
-                          color: Colors.blueAccent,
-                          fontSize: size.width * 0.045,
-                        ),
-                      ),
+                      backgroundColor: Colors.white,
+                      textColor: Colors.blueAccent,
+                      borderRadius: BorderRadius.circular(30),
+                      width: size.width * 0.5,
+                      height: 50,
+                      fontSize: size.width * 0.045,
                     ),
+                    SizedBox(height: size.height * 0.03),
                   ],
                 ),
               ),
