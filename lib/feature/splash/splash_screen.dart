@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../core/utils/assets.dart';
+
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
 
@@ -14,11 +16,7 @@ class SplashScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Center(
-              child: Image.asset(
-                'assets/icon/logo.png',
-                width: 200,
-                color: Colors.white,
-              ),
+              child: Image.asset(Assets.logo, width: 200, color: Colors.white),
             ),
             Text(
               "Learn",
