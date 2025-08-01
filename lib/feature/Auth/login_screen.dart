@@ -8,35 +8,62 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                "Welcome back",
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SizedBox(height: 80),
+            Text(
+              "Welcome back",
+              style: TextStyle(
+                fontSize: 26,
+                fontWeight: FontWeight.bold,
+                color: Colors.blueAccent,
+              ),
+            ),
+            SizedBox(height: 32),
+            CustomTextFiled(
+              hintText: 'Email',
+              prefixIcon: Icons.email_outlined,
+            ),
+
+            SizedBox(height: 16),
+
+            CustomTextFiled(
+              hintText: "Password",
+              prefixIcon: Icons.lock_outline,
+              isPassword: true,
+            ),
+
+            SizedBox(height: 24),
+
+            MaterialButton(
+              height: 50,
+              minWidth: double.infinity,
+              color: Colors.blueAccent,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Text(
+                "Login",
                 style: TextStyle(
-                  fontSize: 26,
+                  color: Colors.white,
                   fontWeight: FontWeight.bold,
-                  color: Color(0xFF1C2B36),
                 ),
               ),
-              SizedBox(height: 10),
-              CustomTextFiled(
-                hintText: 'Email',
-                prefixIcon: Icons.email_outlined,
-              ),
+              onPressed: () {},
+            ),
 
-              SizedBox(height: 16),
-
-              CustomTextFiled(
-                hintText: "Password",
-                prefixIcon: Icons.lock_outline,
-                isPassword: true,
+            SizedBox(height: 15),
+            TextButton(
+              onPressed: () {},
+              child: Text(
+                "Forget Password?",
+                style: TextStyle(color: Colors.blueAccent),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
