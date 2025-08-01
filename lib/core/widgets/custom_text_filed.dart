@@ -1,0 +1,63 @@
+import 'package:flutter/material.dart';
+
+class CustomTextFiled extends StatefulWidget {
+  final String hintText;
+  final IconData prefixIcon;
+  final bool isPassword;
+  final TextEditingController? controller;
+
+  const CustomTextFiled({
+    super.key,
+    required this.hintText,
+    required this.prefixIcon,
+    this.isPassword = false,
+    this.controller,
+  });
+
+  @override
+  State<CustomTextFiled> createState() => _CustomTextFiledState();
+}
+
+class _CustomTextFiledState extends State<CustomTextFiled> {
+  bool _obscureText = true;
+
+  @override
+  Widget build(BuildContext context) {
+    return TextFormField(
+      controller: widget.controller,
+      obscureText: widget.isPassword ? _obscureText : false,
+      cursorColor: Colors.blueAccent,
+      decoration: InputDecoration(
+        hintText: widget.hintText,
+        hintStyle: const TextStyle(color: Colors.grey),
+        prefixIcon: Icon(widget.prefixIcon, color: Colors.black),
+        suffixIcon:
+            widget.isPassword
+                ? IconButton(
+                  icon: Icon(
+                    _obscureText ? Icons.visibility_off : Icons.visibility,
+                    color: Colors.grey,
+                  ),
+                  onPressed: () {
+                    setState(() {
+                      _obscureText = !_obscureText;
+                    });
+                  },
+                )
+                : null,
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(15),
+          borderSide: const BorderSide(color: Color(0xFFD1D9E2), width: 1.5),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(15),
+          borderSide: const BorderSide(color: Colors.blueAccent, width: 1.8),
+        ),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(15),
+          borderSide: const BorderSide(color: Color(0xFFD1D9E2)),
+        ),
+      ),
+    );
+  }
+}
