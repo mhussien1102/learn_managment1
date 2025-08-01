@@ -21,7 +21,6 @@ class _SplashScreenState extends State<SplashScreen>
   void initState() {
     super.initState();
 
-    // Logo animation (slide from left)
     _logoController = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 1000),
@@ -31,7 +30,6 @@ class _SplashScreenState extends State<SplashScreen>
       end: Offset.zero,
     ).animate(CurvedAnimation(parent: _logoController, curve: Curves.easeOut));
 
-    // Content animation (fade in)
     _contentController = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 800),
@@ -40,7 +38,6 @@ class _SplashScreenState extends State<SplashScreen>
       CurvedAnimation(parent: _contentController, curve: Curves.easeIn),
     );
 
-    // Start animations in sequence
     _logoController.forward().then((_) {
       _contentController.forward();
     });
@@ -55,69 +52,86 @@ class _SplashScreenState extends State<SplashScreen>
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Colors.blueAccent,
       body: SizedBox(
-        height: double.infinity,
-        width: double.infinity,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SlideTransition(
-              position: _logoAnimation,
-              child: Image.asset(Assets.logo, width: 200, color: Colors.white),
-            ),
-            const SizedBox(height: 30),
-            FadeTransition(
-              opacity: _contentOpacity,
-              child: Column(
-                children: [
-                  Text(
-                    "Learn",
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 50,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  const SizedBox(height: 10),
-                  const Text(
-                    "Teacher Management",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 18,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                  const Text(
-                    "System",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 18,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                  const SizedBox(height: 20),
-                  MaterialButton(
-                    minWidth: 200,
-                    height: 50,
-                    onPressed: () {
-                      Navigator.pushReplacementNamed(context, AppRoutes.login);
-                    },
-                    color: Colors.white,
-                    shape: RoundedRectangleBorder(
-                      side: const BorderSide(color: Colors.blueAccent),
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                    child: const Text(
-                      "Get Started",
-                      style: TextStyle(color: Colors.blueAccent, fontSize: 18),
-                    ),
-                  ),
-                ],
+        height: size.height,
+        width: size.width,
+        child: Padding(
+          padding: EdgeInsets.symmetric(
+            horizontal: size.width * 0.08,
+            vertical: size.height * 0.08,
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SlideTransition(
+                position: _logoAnimation,
+                child: Image.asset(
+                  Assets.logo,
+                  width: size.width * 0.5,
+                  color: Colors.white,
+                ),
               ),
-            ),
-          ],
+              SizedBox(height: size.height * 0.04),
+              FadeTransition(
+                opacity: _contentOpacity,
+                child: Column(
+                  children: [
+                    Text(
+                      "Learn",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: size.width * 0.12,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(height: size.height * 0.01),
+                    Text(
+                      "Teacher Management",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: size.width * 0.045,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    Text(
+                      "System",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: size.width * 0.045,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    SizedBox(height: size.height * 0.03),
+                    MaterialButton(
+                      minWidth: size.width * 0.5,
+                      height: 50,
+                      onPressed: () {
+                        Navigator.pushReplacementNamed(
+                          context,
+                          AppRoutes.login,
+                        );
+                      },
+                      color: Colors.white,
+                      shape: RoundedRectangleBorder(
+                        side: const BorderSide(color: Colors.blueAccent),
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                      child: Text(
+                        "Get Started",
+                        style: TextStyle(
+                          color: Colors.blueAccent,
+                          fontSize: size.width * 0.045,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
