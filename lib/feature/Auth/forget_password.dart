@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../core/utils/app_routes.dart';
 import '../../core/widgets/custom_button.dart';
 import '../../core/widgets/custom_text_filed.dart';
 
@@ -22,6 +23,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
           backgroundColor: Colors.blueAccent,
         ),
       );
+      Navigator.pushNamed(context, AppRoutes.otp);
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
