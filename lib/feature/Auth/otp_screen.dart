@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:learn_managment1/core/widgets/custom_button.dart';
 import '../../core/utils/app_routes.dart';
+import '../../core/utils/constants.dart';
 import 'widgets/otp_description.dart';
 import 'widgets/otp_input_field.dart';
 
@@ -19,7 +20,7 @@ class _OtpScreenState extends State<OtpScreen> {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text('OTP verified successfully'),
-          backgroundColor: Colors.blueAccent,
+          backgroundColor: primaryColor,
         ),
       );
       Navigator.pushReplacementNamed(context, AppRoutes.newPassword);
@@ -60,13 +61,13 @@ class _OtpScreenState extends State<OtpScreen> {
                 ScaffoldMessenger.of(context).showSnackBar(
                   const SnackBar(
                     content: Text('please check your email'),
-                    backgroundColor: Colors.blueAccent,
+                    backgroundColor: primaryColor,
                   ),
                 );
               },
               child: const Text(
                 "Resend Code",
-                style: TextStyle(color: Colors.blueAccent),
+                style: TextStyle(color: primaryColor),
               ),
             ),
           ],

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
 
+import '../../../core/utils/constants.dart';
+
 class OtpInputField extends StatelessWidget {
   final TextEditingController controller;
 
@@ -24,14 +26,14 @@ class OtpInputField extends StatelessWidget {
       defaultPinTheme: defaultPinTheme,
       focusedPinTheme: defaultPinTheme.copyWith(
         decoration: BoxDecoration(
-          border: Border.all(color: Colors.blueAccent),
+          border: Border.all(color: primaryColor),
           borderRadius: BorderRadius.circular(12),
         ),
       ),
       submittedPinTheme: defaultPinTheme.copyWith(
         decoration: BoxDecoration(
           color: Colors.blueAccent.withOpacity(0.1),
-          border: Border.all(color: Colors.blueAccent),
+          border: Border.all(color: primaryColor),
           borderRadius: BorderRadius.circular(12),
         ),
       ),

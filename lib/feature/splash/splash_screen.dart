@@ -116,7 +116,7 @@ class _SplashScreenState extends State<SplashScreen>
                         );
                       },
                       backgroundColor: Colors.white,
-                      textColor: Colors.blueAccent,
+                      textColor: primaryColor,
                       borderRadius: BorderRadius.circular(30),
                       width: size.width * 0.5,
                       height: 50,

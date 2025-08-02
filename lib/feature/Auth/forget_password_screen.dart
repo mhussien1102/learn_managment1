@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../core/utils/app_routes.dart';
+import '../../core/utils/constants.dart';
 import '../../core/widgets/custom_button.dart';
 import '../../core/widgets/custom_text_filed.dart';
 
@@ -20,7 +21,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text('Reset link sent to your email'),
-          backgroundColor: Colors.blueAccent,
+          backgroundColor: primaryColor,
         ),
       );
       Navigator.pushNamed(context, AppRoutes.otp);

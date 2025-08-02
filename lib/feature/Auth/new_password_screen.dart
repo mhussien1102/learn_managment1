@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:learn_managment1/core/widgets/custom_text_filed.dart';
 
 import '../../core/utils/app_routes.dart' show AppRoutes;
+import '../../core/utils/constants.dart';
 import '../../core/widgets/custom_button.dart';
 
 class NewPasswordScreen extends StatelessWidget {
@@ -63,7 +64,7 @@ class NewPasswordScreen extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               child: CustomButton(
-                backgroundColor: Colors.blueAccent,
+                backgroundColor: primaryColor,
                 text: "Submit",
                 onPressed: () {
                   // Add validation and action here
@@ -89,7 +90,7 @@ class NewPasswordScreen extends StatelessWidget {
                     ScaffoldMessenger.of(context).showSnackBar(
                       const SnackBar(
                         content: Text("Password updated"),
-                        backgroundColor: Colors.blueAccent,
+                        backgroundColor: primaryColor,
                       ),
                     );
                     Navigator.pushNamed(context, AppRoutes.login);
