@@ -20,6 +20,7 @@ class _LoginScreenState extends State<LoginScreen> {
   void _handleLogin() {
     if (_formKey.currentState!.validate()) {
       print("Logging in with ${_emailController.text}");
+      Navigator.pushReplacementNamed(context, AppRoutes.ecommerce);
     } else {
       // Show snackbar error
       ScaffoldMessenger.of(context).showSnackBar(
