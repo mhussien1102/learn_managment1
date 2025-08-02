@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../core/utils/app_routes.dart';
 import '../../core/utils/assets.dart';
+import '../../core/utils/constants.dart';
 import '../../core/widgets/custom_button.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -55,7 +56,7 @@ class _SplashScreenState extends State<SplashScreen>
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: Colors.blueAccent,
+      backgroundColor: primaryColor,
       body: SizedBox(
         height: size.height,
         width: size.width,

@@ -3,6 +3,7 @@ import 'package:learn_managment1/core/utils/app_routes.dart';
 import 'package:learn_managment1/core/widgets/custom_text_filed.dart';
 import 'package:learn_managment1/core/widgets/custom_button.dart';
 import '../../core/utils/assets.dart';
+import '../../core/utils/constants.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -51,7 +52,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 Image.asset(
                   Assets.logo,
                   width: size.width * 0.5,
-                  color: Colors.blueAccent,
+                  color: primaryColor,
                 ),
                 SizedBox(height: size.height * 0.03),
                 Text(
@@ -59,7 +60,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   style: TextStyle(
                     fontSize: size.width * 0.07,
                     fontWeight: FontWeight.bold,
-                    color: Colors.blueAccent,
+                    color: primaryColor,
                   ),
                 ),
                 SizedBox(height: size.height * 0.04),
@@ -89,7 +90,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: Text(
                     "Forgot Password?",
                     style: TextStyle(
-                      color: Colors.blueAccent,
+                      color: primaryColor,
                       fontSize: size.width * 0.04,
                     ),
                   ),

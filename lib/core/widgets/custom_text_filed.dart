@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../utils/constants.dart';
+
 class CustomTextFiled extends StatefulWidget {
   final String hintText;
   final IconData prefixIcon;
@@ -45,7 +47,7 @@ class _CustomTextFiledState extends State<CustomTextFiled> {
                 return null;
               }),
       obscureText: widget.isPassword ? _obscureText : false,
-      cursorColor: Colors.blueAccent,
+      cursorColor: primaryColor,
       decoration: InputDecoration(
         hintText: widget.hintText,
         hintStyle: const TextStyle(color: Colors.grey),
@@ -70,7 +72,7 @@ class _CustomTextFiledState extends State<CustomTextFiled> {
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(15),
-          borderSide: const BorderSide(color: Colors.blueAccent, width: 1.8),
+          borderSide: const BorderSide(color: primaryColor, width: 1.8),
         ),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(15),
