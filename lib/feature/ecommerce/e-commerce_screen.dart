@@ -30,7 +30,9 @@ class EcommerceScreen extends StatelessWidget {
         elevation: 0,
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushNamed(context, AppRoutes.cart);
+            },
             icon: const Icon(Icons.shopping_cart, color: Colors.white),
           ),
         ],

@@ -6,6 +6,7 @@ import 'package:learn_managment1/feature/ecommerce/e-commerce_screen.dart';
 import 'package:learn_managment1/feature/Auth/otp_screen.dart';
 import 'package:learn_managment1/feature/splash/splash_screen.dart';
 
+import '../../feature/ecommerce/cart_screen.dart';
 import '../../feature/ecommerce/deatils_screen.dart';
 import '../model/product_model.dart';
 
@@ -18,6 +19,7 @@ class AppRoutes {
   static const String newPassword = '/new_password';
   static const String ecommerce = '/ecommerce';
   static const String details = '/details';
+  static const String cart = '/cart';
 
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -38,6 +40,9 @@ class AppRoutes {
         return MaterialPageRoute(
           builder: (_) => DetailsScreen(product: product),
         );
+      case cart:
+        return MaterialPageRoute(builder: (_) => const CartScreen());
+
       default:
         return MaterialPageRoute(
           builder:
