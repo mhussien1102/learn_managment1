@@ -12,7 +12,6 @@ import '../model/product_model.dart';
 
 class AppRoutes {
   static const String splash = '/';
-  static const String home = '/home';
   static const String login = '/login';
   static const String forget = '/forget_password';
   static const String otp = '/otp_screen';
@@ -42,13 +41,14 @@ class AppRoutes {
         return MaterialPageRoute(builder: (_) => const EcommerceScreen());
 
       case details:
-        final product = settings.arguments as ProductModel;
+        final args = settings.arguments as Map<String, dynamic>;
+        final product = args['product'] as ProductModel;
+        final cartItems = args['cartItems'] as List<Map<String, dynamic>>;
         return MaterialPageRoute(
-          builder: (_) => DetailsScreen(product: product),
+          builder: (_) => DetailsScreen(product: product, cartItems: cartItems),
         );
 
       case cart:
-        // ✅ Correctly receive cart items from arguments
         final cartItems = settings.arguments as List<Map<String, dynamic>>;
         return MaterialPageRoute(
           builder: (_) => CartScreen(cartItems: cartItems),

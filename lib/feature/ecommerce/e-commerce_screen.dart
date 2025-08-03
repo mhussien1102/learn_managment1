@@ -104,7 +104,10 @@ class _EcommerceScreenState extends State<EcommerceScreen> {
                       Navigator.pushNamed(
                         context,
                         AppRoutes.details,
-                        arguments: product,
+                        arguments: {
+                          'product': product,
+                          'cartItems': _cartItems,
+                        },
                       );
                     },
                   );
