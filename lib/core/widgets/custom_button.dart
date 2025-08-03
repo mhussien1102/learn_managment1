@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../utils/constants.dart';
 
 class CustomButton extends StatelessWidget {
@@ -9,7 +8,7 @@ class CustomButton extends StatelessWidget {
   final double? height;
   final Color backgroundColor;
   final Color textColor;
-  final double fontSize;
+  final double? fontSize;
   final BorderRadiusGeometry borderRadius;
 
   const CustomButton({
@@ -17,18 +16,26 @@ class CustomButton extends StatelessWidget {
     required this.text,
     required this.onPressed,
     this.width,
-    this.height = 50,
+    this.height,
     this.backgroundColor = primaryColor,
     this.textColor = Colors.white,
-    this.fontSize = 16,
+    this.fontSize,
     this.borderRadius = const BorderRadius.all(Radius.circular(10)),
   });
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
+
+    final responsiveHeight =
+        height ?? screenHeight * 0.06; // approx 48–50px on normal screens
+    final responsiveFontSize =
+        fontSize ?? screenWidth * 0.04; // e.g. 16 on 400px screen
+
     return SizedBox(
       width: width ?? double.infinity,
-      height: height,
+      height: responsiveHeight,
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
@@ -39,7 +46,7 @@ class CustomButton extends StatelessWidget {
           text,
           style: TextStyle(
             color: textColor,
-            fontSize: fontSize,
+            fontSize: responsiveFontSize,
             fontWeight: FontWeight.bold,
           ),
         ),

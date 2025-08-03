@@ -1,30 +1,27 @@
 import 'package:flutter/material.dart';
-
 import '../model/product_model.dart';
 import '../utils/constants.dart';
 import 'custom_button.dart';
 
 class CustomCard extends StatelessWidget {
   final ProductModel product;
-  final double wid;
-  final double lenImg;
-  final double widImg;
   final VoidCallback onPressed;
 
-  const CustomCard({
-    super.key,
-    required this.product,
-    required this.wid,
-    required this.lenImg,
-    required this.widImg,
-    required this.onPressed,
-  });
+  const CustomCard({super.key, required this.product, required this.onPressed});
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
+
+    final isTablet = screenWidth > 600;
+    final cardWidth = isTablet ? screenWidth / 3 - 24 : screenWidth / 2 - 24;
+    final imageHeight = screenHeight * 0.12;
+    final totalHeight = imageHeight + 190;
+
     return SizedBox(
-      width: wid,
-      height: 450,
+      width: cardWidth,
+      height: totalHeight,
       child: Card(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         elevation: 4,
@@ -33,13 +30,12 @@ class CustomCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Image with rounded top
             ClipRRect(
               borderRadius: const BorderRadius.vertical(
                 top: Radius.circular(16),
               ),
               child: Container(
-                height: lenImg,
+                height: imageHeight,
                 width: double.infinity,
                 color: Colors.grey.shade100,
                 child: Image.asset(
@@ -57,7 +53,6 @@ class CustomCard extends StatelessWidget {
                 ),
               ),
             ),
-
             Padding(
               padding: const EdgeInsets.symmetric(
                 horizontal: 10.0,
@@ -70,16 +65,16 @@ class CustomCard extends StatelessWidget {
                     product.name,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(
-                      fontSize: 14,
+                    style: TextStyle(
+                      fontSize: screenWidth * 0.035,
                       fontWeight: FontWeight.w600,
                     ),
                   ),
                   const SizedBox(height: 4),
                   Text(
-                    '${product.price}L.E',
-                    style: const TextStyle(
-                      fontSize: 13,
+                    '${product.price} L.E',
+                    style: TextStyle(
+                      fontSize: screenWidth * 0.032,
                       color: primaryColor,
                       fontWeight: FontWeight.w500,
                     ),
@@ -87,22 +82,25 @@ class CustomCard extends StatelessWidget {
                   const SizedBox(height: 2),
                   Text(
                     'Sales: ${product.sales}',
-                    style: TextStyle(fontSize: 12, color: Colors.grey.shade600),
+                    style: TextStyle(
+                      fontSize: screenWidth * 0.03,
+                      color: Colors.grey.shade600,
+                    ),
                   ),
                   const SizedBox(height: 4),
                   Text(
                     product.desc,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(fontSize: 11, color: Colors.black87),
+                    style: TextStyle(
+                      fontSize: screenWidth * 0.028,
+                      color: Colors.black87,
+                    ),
                   ),
                 ],
               ),
             ),
-
             const Spacer(),
-
-            // Add To Cart button
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
               child: SizedBox(
