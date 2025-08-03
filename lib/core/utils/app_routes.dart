@@ -3,11 +3,11 @@ import 'package:learn_managment1/feature/Auth/forget_password_screen.dart';
 import 'package:learn_managment1/feature/Auth/login_screen.dart';
 import 'package:learn_managment1/feature/Auth/new_password_screen.dart';
 import 'package:learn_managment1/feature/ecommerce/e-commerce_screen.dart';
+import 'package:learn_managment1/feature/Auth/otp_screen.dart';
+import 'package:learn_managment1/feature/splash/splash_screen.dart';
 
-import '../../feature/Auth/otp_screen.dart';
 import '../../feature/ecommerce/deatils_screen.dart';
-import '../../feature/splash/splash_screen.dart';
-// import other screens as needed
+import '../model/product_model.dart';
 
 class AppRoutes {
   static const String splash = '/';
@@ -18,8 +18,6 @@ class AppRoutes {
   static const String newPassword = '/new_password';
   static const String ecommerce = '/ecommerce';
   static const String details = '/details';
-
-  // Add more route names here
 
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -36,7 +34,10 @@ class AppRoutes {
       case ecommerce:
         return MaterialPageRoute(builder: (_) => const EcommerceScreen());
       case details:
-        return MaterialPageRoute(builder: (_) => const DeatilsScreen());
+        final product = settings.arguments as ProductModel;
+        return MaterialPageRoute(
+          builder: (_) => DetailsScreen(product: product),
+        );
       default:
         return MaterialPageRoute(
           builder:

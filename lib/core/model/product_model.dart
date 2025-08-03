@@ -1,12 +1,9 @@
 class ProductModel {
-  final String id;
+  final int id;
   final String name;
   final String desc;
-  final String brand;
+  final String author;
   final String category;
-  final String type;
-  final String disease;
-  final String sideEffect;
   final int price;
   final int maxQuantity;
   final int sales;
@@ -16,11 +13,8 @@ class ProductModel {
     required this.id,
     required this.name,
     required this.desc,
-    required this.brand,
+    required this.author,
     required this.category,
-    required this.type,
-    required this.disease,
-    required this.sideEffect,
     required this.price,
     required this.maxQuantity,
     required this.sales,

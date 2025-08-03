@@ -16,8 +16,6 @@ class EcommerceScreen extends StatelessWidget {
 
     final isTablet = screenWidth > 600;
     final crossAxisCount = isTablet ? 3 : 2;
-    final cardWidth = screenWidth / crossAxisCount - 24;
-    final imageHeight = screenHeight * 0.15;
 
     return Scaffold(
       backgroundColor: Colors.white,
