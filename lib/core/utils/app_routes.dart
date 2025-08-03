@@ -5,6 +5,7 @@ import 'package:learn_managment1/feature/Auth/new_password_screen.dart';
 import 'package:learn_managment1/feature/ecommerce/e-commerce_screen.dart';
 
 import '../../feature/Auth/otp_screen.dart';
+import '../../feature/ecommerce/deatils_screen.dart';
 import '../../feature/splash/splash_screen.dart';
 // import other screens as needed
 
@@ -16,6 +17,7 @@ class AppRoutes {
   static const String otp = '/otp_screen';
   static const String newPassword = '/new_password';
   static const String ecommerce = '/ecommerce';
+  static const String details = '/details';
 
   // Add more route names here
 
@@ -33,6 +35,8 @@ class AppRoutes {
         return MaterialPageRoute(builder: (_) => const NewPasswordScreen());
       case ecommerce:
         return MaterialPageRoute(builder: (_) => const EcommerceScreen());
+      case details:
+        return MaterialPageRoute(builder: (_) => const DeatilsScreen());
       default:
         return MaterialPageRoute(
           builder:

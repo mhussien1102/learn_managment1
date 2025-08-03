@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../core/utils/app_routes.dart';
 import '../../core/utils/constants.dart';
 import '../../core/widgets/custom_card.dart';
 import '../../core/widgets/custom_drawer.dart';
@@ -60,7 +61,11 @@ class EcommerceScreen extends StatelessWidget {
                   return CustomCard(
                     product: demoProducts[index],
                     onPressed: () {
-                      // Add to cart action
+                      Navigator.pushNamed(
+                        context,
+                        AppRoutes.details,
+                        arguments: demoProducts[index],
+                      );
                     },
                   );
                 },
