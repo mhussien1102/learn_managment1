@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-
 import '../../core/utils/constants.dart';
+import '../../core/widgets/custom_drawer.dart';
 
 class EcommerceScreen extends StatelessWidget {
   const EcommerceScreen({super.key});
@@ -11,8 +11,8 @@ class EcommerceScreen extends StatelessWidget {
       backgroundColor: Colors.white,
       appBar: AppBar(
         iconTheme: const IconThemeData(color: Colors.white),
-        title: Text(
-          "Ecommerce",
+        title: const Text(
+          "Learn",
           style: TextStyle(color: Colors.white, fontSize: 30),
         ),
         centerTitle: true,
@@ -21,28 +21,28 @@ class EcommerceScreen extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () {},
-            icon: Icon(Icons.shopping_cart, color: Colors.white),
+            icon: const Icon(Icons.shopping_cart, color: Colors.white),
           ),
         ],
       ),
-      drawer: Drawer(
-        backgroundColor: Colors.white,
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: const [
-            DrawerHeader(
-              decoration: BoxDecoration(color: primaryColor),
-              child: Text(
-                'Menu',
-                style: TextStyle(color: Colors.white, fontSize: 24),
+      drawer: const CustomDrawer(),
+      body: Column(
+        children: [
+          TextField(
+            decoration: InputDecoration(
+              hintText: 'Search',
+              prefixIcon: const Icon(Icons.search),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(12),
               ),
+              focusedBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: primaryColor, width: 2),
+                borderRadius: BorderRadius.circular(12),
+              ),
+              contentPadding: const EdgeInsets.symmetric(horizontal: 16),
             ),
-            ListTile(leading: Icon(Icons.home), title: Text('Home')),
-            ListTile(leading: Icon(Icons.category), title: Text('Categories')),
-            ListTile(leading: Icon(Icons.person), title: Text('Profile')),
-            ListTile(leading: Icon(Icons.settings), title: Text('Settings')),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
