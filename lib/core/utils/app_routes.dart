@@ -25,23 +25,34 @@ class AppRoutes {
     switch (settings.name) {
       case splash:
         return MaterialPageRoute(builder: (_) => const SplashScreen());
+
       case forget:
         return MaterialPageRoute(builder: (_) => ForgetPassword());
+
       case login:
         return MaterialPageRoute(builder: (_) => const LoginScreen());
+
       case otp:
         return MaterialPageRoute(builder: (_) => const OtpScreen());
+
       case newPassword:
         return MaterialPageRoute(builder: (_) => const NewPasswordScreen());
+
       case ecommerce:
         return MaterialPageRoute(builder: (_) => const EcommerceScreen());
+
       case details:
         final product = settings.arguments as ProductModel;
         return MaterialPageRoute(
           builder: (_) => DetailsScreen(product: product),
         );
+
       case cart:
-        return MaterialPageRoute(builder: (_) => const CartScreen());
+        // ✅ Correctly receive cart items from arguments
+        final cartItems = settings.arguments as List<Map<String, dynamic>>;
+        return MaterialPageRoute(
+          builder: (_) => CartScreen(cartItems: cartItems),
+        );
 
       default:
         return MaterialPageRoute(

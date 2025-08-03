@@ -6,14 +6,46 @@ import '../../core/widgets/custom_drawer.dart';
 import '../../core/widgets/custom_text_filed.dart';
 import 'data/demo_data.dart';
 
-class EcommerceScreen extends StatelessWidget {
+class EcommerceScreen extends StatefulWidget {
   const EcommerceScreen({super.key});
+
+  @override
+  State<EcommerceScreen> createState() => _EcommerceScreenState();
+}
+
+class _EcommerceScreenState extends State<EcommerceScreen> {
+  final List<Map<String, dynamic>> _cartItems = [];
+
+  void _addToCart(product) {
+    final existingIndex = _cartItems.indexWhere(
+      (item) => item['id'] == product.id,
+    );
+    if (existingIndex != -1) {
+      setState(() {
+        _cartItems[existingIndex]['quantity'] += 1;
+      });
+    } else {
+      setState(() {
+        _cartItems.add({
+          'id': product.id,
+          'title': product.name,
+          'image': product.url,
+          'price': product.price,
+          'quantity': 1,
+        });
+      });
+    }
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text('${product.name} added to cart'),
+        backgroundColor: primaryColor,
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
-    final screenHeight = MediaQuery.of(context).size.height;
-
     final isTablet = screenWidth > 600;
     final crossAxisCount = isTablet ? 3 : 2;
 
@@ -31,7 +63,11 @@ class EcommerceScreen extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () {
-              Navigator.pushNamed(context, AppRoutes.cart);
+              Navigator.pushNamed(
+                context,
+                AppRoutes.cart,
+                arguments: _cartItems,
+              );
             },
             icon: const Icon(Icons.shopping_cart, color: Colors.white),
           ),
@@ -58,13 +94,17 @@ class EcommerceScreen extends StatelessWidget {
                   childAspectRatio: 0.6,
                 ),
                 itemBuilder: (context, index) {
+                  final product = demoProducts[index];
                   return CustomCard(
-                    product: demoProducts[index],
+                    buttonOnPressed: () {
+                      _addToCart(product);
+                    },
+                    product: product,
                     onPressed: () {
                       Navigator.pushNamed(
                         context,
                         AppRoutes.details,
-                        arguments: demoProducts[index],
+                        arguments: product,
                       );
                     },
                   );

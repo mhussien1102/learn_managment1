@@ -6,8 +6,14 @@ import 'custom_button.dart';
 class CustomCard extends StatelessWidget {
   final ProductModel product;
   final VoidCallback onPressed;
+  final VoidCallback buttonOnPressed;
 
-  const CustomCard({super.key, required this.product, required this.onPressed});
+  const CustomCard({
+    super.key,
+    required this.product,
+    required this.onPressed,
+    required this.buttonOnPressed,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -115,7 +121,7 @@ class CustomCard extends StatelessWidget {
                   width: double.infinity,
                   height: 38,
                   child: CustomButton(
-                    onPressed: onPressed,
+                    onPressed: buttonOnPressed,
                     text: 'Add to Cart',
                   ),
                 ),
