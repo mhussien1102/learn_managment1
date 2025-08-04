@@ -57,7 +57,10 @@ class AppRoutes {
         );
 
       case payment:
-        return MaterialPageRoute(builder: (_) => const PaymentScreen());
+        final cartItems = settings.arguments as List<Map<String, dynamic>>;
+        return MaterialPageRoute(
+          builder: (_) => PaymentScreen(cartItems: cartItems),
+        );
 
       default:
         return MaterialPageRoute(

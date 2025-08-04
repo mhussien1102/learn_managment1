@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:learn_managment1/feature/ecommerce/widgets/cart_item.dart';
-
 import '../../core/utils/app_routes.dart';
 import '../../core/utils/constants.dart';
 import '../../core/widgets/custom_button.dart';
@@ -19,7 +18,7 @@ class _CartScreenState extends State<CartScreen> {
     return widget.cartItems.fold(
       0.0,
       (sum, item) =>
-          sum + (item['price'].toDouble()) * (item['quantity'] as int), // ✅ Fix
+          sum + (item['price'].toDouble()) * (item['quantity'] as int),
     );
   }
 
@@ -27,17 +26,11 @@ class _CartScreenState extends State<CartScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(56.0),
-        child: PreferredSize(
-          preferredSize: Size.fromHeight(40),
-          child: AppBar(
-            iconTheme: IconThemeData(color: Colors.white),
-            backgroundColor: primaryColor,
-            title: const Text("Cart", style: TextStyle(color: Colors.white)),
-            centerTitle: true,
-          ),
-        ),
+      appBar: AppBar(
+        iconTheme: const IconThemeData(color: Colors.white),
+        backgroundColor: primaryColor,
+        title: const Text("Cart", style: TextStyle(color: Colors.white)),
+        centerTitle: true,
       ),
       body: Padding(
         padding: const EdgeInsets.all(10.0),
@@ -91,29 +84,20 @@ class _CartScreenState extends State<CartScreen> {
                 ],
                 borderRadius: BorderRadius.circular(10.0),
               ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Divider(),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Text(
-                        "Total:",
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Text(
-                        "LE ${getTotalPrice().toStringAsFixed(2)}",
-                        style: const TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black,
-                        ),
-                      ),
-                    ],
+                  const Text(
+                    "Total:",
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  ),
+                  Text(
+                    "LE ${getTotalPrice().toStringAsFixed(2)}",
+                    style: const TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                    ),
                   ),
                 ],
               ),
@@ -121,7 +105,11 @@ class _CartScreenState extends State<CartScreen> {
             const SizedBox(height: 20),
             CustomButton(
               onPressed: () {
-                Navigator.pushNamed(context, AppRoutes.payment);
+                Navigator.pushNamed(
+                  context,
+                  AppRoutes.payment,
+                  arguments: widget.cartItems,
+                );
               },
               text: "Checkout",
             ),
