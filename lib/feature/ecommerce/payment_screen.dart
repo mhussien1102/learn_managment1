@@ -80,19 +80,26 @@ class _PaymentScreenState extends State<PaymentScreen> {
               child: CustomButton(
                 onPressed: () {
                   if ((selectedPayment == "Vodafone Cash" ||
-                          selectedPayment == "InstaPay") &&
-                      phoneController.text.isEmpty) {
+                              selectedPayment == "InstaPay") &&
+                          phoneController.text.isEmpty ||
+                      phoneController.text.length < 11) {
                     ScaffoldMessenger.of(context).showSnackBar(
                       const SnackBar(
                         backgroundColor: Colors.red,
-                        content: Text("Please enter your phone number"),
+                        content: Text("Please enter valid phone number"),
                       ),
                     );
                     return;
                   }
 
                   ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text("Payment method: $selectedPayment")),
+                    SnackBar(
+                      backgroundColor: primaryColor,
+                      content: Text(
+                        "The payment method success by: $selectedPayment",
+                        style: const TextStyle(color: Colors.white),
+                      ),
+                    ),
                   );
                 },
                 text: 'Pay Now',
