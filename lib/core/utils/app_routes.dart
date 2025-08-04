@@ -8,6 +8,7 @@ import 'package:learn_managment1/feature/splash/splash_screen.dart';
 
 import '../../feature/ecommerce/cart_screen.dart';
 import '../../feature/ecommerce/deatils_screen.dart';
+import '../../feature/ecommerce/payment_screen.dart';
 import '../model/product_model.dart';
 
 class AppRoutes {
@@ -19,6 +20,7 @@ class AppRoutes {
   static const String ecommerce = '/ecommerce';
   static const String details = '/details';
   static const String cart = '/cart';
+  static const String payment = '/payment';
 
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -53,6 +55,9 @@ class AppRoutes {
         return MaterialPageRoute(
           builder: (_) => CartScreen(cartItems: cartItems),
         );
+
+      case payment:
+        return MaterialPageRoute(builder: (_) => const PaymentScreen());
 
       default:
         return MaterialPageRoute(

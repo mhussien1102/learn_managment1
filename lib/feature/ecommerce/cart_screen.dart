@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:learn_managment1/feature/ecommerce/widgets/cart_item.dart';
 
+import '../../core/utils/app_routes.dart';
 import '../../core/utils/constants.dart';
 import '../../core/widgets/custom_button.dart';
 
@@ -31,6 +32,7 @@ class _CartScreenState extends State<CartScreen> {
         child: PreferredSize(
           preferredSize: Size.fromHeight(40),
           child: AppBar(
+            iconTheme: IconThemeData(color: Colors.white),
             backgroundColor: primaryColor,
             title: const Text("Cart", style: TextStyle(color: Colors.white)),
             centerTitle: true,
@@ -117,7 +119,12 @@ class _CartScreenState extends State<CartScreen> {
               ),
             ),
             const SizedBox(height: 20),
-            CustomButton(onPressed: () {}, text: "Checkout"),
+            CustomButton(
+              onPressed: () {
+                Navigator.pushNamed(context, AppRoutes.payment);
+              },
+              text: "Checkout",
+            ),
           ],
         ),
       ),
