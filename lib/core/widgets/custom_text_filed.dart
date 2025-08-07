@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../utils/constants.dart';
 
 class CustomTextFiled extends StatefulWidget {
@@ -8,6 +7,7 @@ class CustomTextFiled extends StatefulWidget {
   final bool isPassword;
   final TextEditingController? controller;
   final String? Function(String?)? validator;
+  final ValueChanged<String>? onChanged; // ✅ NEW
 
   const CustomTextFiled({
     super.key,
@@ -16,6 +16,7 @@ class CustomTextFiled extends StatefulWidget {
     this.isPassword = false,
     this.controller,
     this.validator,
+    this.onChanged, // ✅ NEW
   });
 
   @override
@@ -29,6 +30,7 @@ class _CustomTextFiledState extends State<CustomTextFiled> {
   Widget build(BuildContext context) {
     return TextFormField(
       controller: widget.controller,
+      onChanged: widget.onChanged, // ✅ NEW
       validator:
           widget.validator ??
           (widget.isPassword
