@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../../core/utils/constants.dart';
+import '../utils/app_routes.dart';
 
 class CustomDrawer extends StatelessWidget {
   const CustomDrawer({super.key});
@@ -10,7 +11,7 @@ class CustomDrawer extends StatelessWidget {
       backgroundColor: Colors.white,
       child: ListView(
         padding: EdgeInsets.zero,
-        children: const [
+        children: [
           DrawerHeader(
             decoration: BoxDecoration(color: primaryColor),
             child: Text(
@@ -18,8 +19,20 @@ class CustomDrawer extends StatelessWidget {
               style: TextStyle(color: Colors.white, fontSize: 24),
             ),
           ),
-          ListTile(leading: Icon(Icons.home), title: Text('Home')),
-          ListTile(leading: Icon(Icons.category), title: Text('Categories')),
+          ListTile(
+            leading: Icon(Icons.store),
+            title: Text('Store'),
+            onTap: () {
+              Navigator.pushNamed(context, AppRoutes.ecommerce);
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.school),
+            title: Text('Teacher'),
+            onTap: () {
+              Navigator.pushNamed(context, AppRoutes.teacher);
+            },
+          ),
           ListTile(leading: Icon(Icons.person), title: Text('Profile')),
           ListTile(leading: Icon(Icons.settings), title: Text('Settings')),
         ],
