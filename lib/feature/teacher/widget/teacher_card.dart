@@ -10,7 +10,7 @@ class TeacherCard extends StatelessWidget {
     return GestureDetector(
       onTap: () {},
       child: SizedBox(
-        height: 400,
+        height: 450,
         child: Card(
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
@@ -24,7 +24,7 @@ class TeacherCard extends StatelessWidget {
                 ),
                 child: Image.asset(
                   AssetImages.teacher,
-                  height: 150,
+                  height: 210,
                   width: double.infinity,
                   fit: BoxFit.cover,
                 ),
