@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../core/utils/constants.dart';
+import '../../core/widgets/custom_drawer.dart';
 
 class Teacher extends StatelessWidget {
   const Teacher({super.key});
@@ -9,12 +10,16 @@ class Teacher extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Teacher"),
+        iconTheme: const IconThemeData(color: Colors.white),
+        title: const Text(
+          "Teacher",
+          style: TextStyle(color: Colors.white, fontSize: 24),
+        ),
         centerTitle: true,
         backgroundColor: primaryColor,
         elevation: 0,
-        foregroundColor: Colors.black,
       ),
+      drawer: CustomDrawer(),
     );
   }
 }

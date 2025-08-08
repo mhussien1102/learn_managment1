@@ -4,4 +4,5 @@ class Assets {
 
 class AssetImages {
   static const String book = 'assets/img/test1.png';
+  static const String teacher = 'assets/img/teacher.png';
 }
