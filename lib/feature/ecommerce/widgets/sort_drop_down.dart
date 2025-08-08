@@ -13,7 +13,6 @@ class SortDropdown extends StatelessWidget {
     String label,
     bool isSelected,
   ) {
-    // Menu list shows white text; selected row in menu shows black
     return DropdownMenuItem(
       value: v,
       child: Text(
@@ -29,7 +28,6 @@ class SortDropdown extends StatelessWidget {
       dropdownColor: primaryColor,
       value: value,
       isExpanded: true,
-      // Closed dropdown selected item:
       style: const TextStyle(color: Colors.black, fontWeight: FontWeight.w500),
       items: [
         _menuItem(SortOption.none, 'None', value == SortOption.none),

@@ -19,10 +19,8 @@ class EcommerceScreen extends StatefulWidget {
 }
 
 class _EcommerceScreenState extends State<EcommerceScreen> {
-  // CART
   final List<Map<String, dynamic>> _cartItems = [];
 
-  // Visible + filters
   late List<ProductModel> _visibleProducts;
 
   late double _minPrice;
@@ -37,16 +35,13 @@ class _EcommerceScreenState extends State<EcommerceScreen> {
 
     _visibleProducts = List<ProductModel>.from(demoProducts);
 
-    // bounds
     final prices = demoProducts.map((p) => p.price.toDouble()).toList()..sort();
     _minPrice = prices.isEmpty ? 0 : prices.first;
     _maxPrice = prices.isEmpty ? 0 : prices.last;
 
-    // categories
     _allCategories =
         demoProducts.map((p) => p.category).toSet().toList()..sort();
 
-    // init filters with correct price range
     _filters = ProductFilters(
       categories: <String>{},
       priceRange: RangeValues(_minPrice, _maxPrice),

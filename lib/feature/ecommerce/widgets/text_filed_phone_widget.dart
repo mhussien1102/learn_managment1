@@ -4,7 +4,7 @@ import '../../../core/utils/constants.dart';
 
 class TextFiledPhoneWidget extends StatelessWidget {
   final TextEditingController phoneController;
-  final String txt; // or whatever type phone is
+  final String txt;
 
   const TextFiledPhoneWidget({
     required this.phoneController,
