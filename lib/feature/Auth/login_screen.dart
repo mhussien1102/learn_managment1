@@ -22,7 +22,6 @@ class _LoginScreenState extends State<LoginScreen> {
       print("Logging in with ${_emailController.text}");
       Navigator.pushReplacementNamed(context, AppRoutes.ecommerce);
     } else {
-      // Show snackbar error
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text('Please fill all fields correctly'),

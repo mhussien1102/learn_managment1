@@ -42,7 +42,6 @@ class NewPasswordScreen extends StatelessWidget {
             ),
             const SizedBox(height: 32),
 
-            // New Password Field
             CustomTextFiled(
               hintText: "New password",
               prefixIcon: Icons.lock_outline,
@@ -51,7 +50,6 @@ class NewPasswordScreen extends StatelessWidget {
             ),
             const SizedBox(height: 20),
 
-            // Confirm Password Field
             CustomTextFiled(
               hintText: "Confirm password",
               prefixIcon: Icons.lock_outline,
@@ -60,14 +58,12 @@ class NewPasswordScreen extends StatelessWidget {
             ),
             const SizedBox(height: 32),
 
-            // Submit Button
             SizedBox(
               width: double.infinity,
               child: CustomButton(
                 backgroundColor: primaryColor,
                 text: "Submit",
                 onPressed: () {
-                  // Add validation and action here
                   final newPassword = newPasswordController.text;
                   final confirmPassword = confirmPasswordController.text;
 
@@ -86,7 +82,6 @@ class NewPasswordScreen extends StatelessWidget {
                       ),
                     );
                   } else {
-                    // Proceed with password change
                     ScaffoldMessenger.of(context).showSnackBar(
                       const SnackBar(
                         content: Text("Password updated"),

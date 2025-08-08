@@ -13,13 +13,10 @@ class FilterBottomSheet extends StatefulWidget {
   final double minPrice;
   final double maxPrice;
 
-  /// Current filters (used to initialize controls)
   final ProductFilters initial;
 
-  /// Called on every change (live preview)
   final ValueChanged<ProductFilters>? onChanged;
 
-  /// Called when user taps "Apply"
   final ValueChanged<ProductFilters>? onApply;
 
   const FilterBottomSheet({
@@ -53,7 +50,7 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
     categories: _selectedCats,
     priceRange: _range,
     sort: _sort,
-    searchQuery: widget.initial.searchQuery, // search controlled outside
+    searchQuery: widget.initial.searchQuery,
   );
 
   void _emitChange() => widget.onChanged?.call(_currentFilters());
@@ -127,7 +124,6 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
             UISpacing.gap16,
           ],
 
-          // Price
           PriceRangeRow(
             min: widget.minPrice,
             max: widget.maxPrice,
@@ -139,7 +135,6 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
           ),
           UISpacing.gap8,
 
-          // Sort
           const SectionTitle('Sort by'),
           UISpacing.gap8,
           SortDropdown(
@@ -151,7 +146,6 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
           ),
           UISpacing.gap16,
 
-          // Footer
           Row(
             children: [
               Expanded(

@@ -17,7 +17,6 @@ class ForgetPassword extends StatefulWidget {
 class _ForgetPasswordState extends State<ForgetPassword> {
   void _sendResetLink() {
     if (widget._formKey.currentState!.validate()) {
-      // Proceed with sending the reset link
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text('Reset link sent to your email'),
