@@ -137,6 +137,7 @@ class _DetailsContent extends StatelessWidget {
             ],
           ),
         ),
+        SizedBox(height: MediaQuery.of(context).size.height * 0.06),
         CustomButton(text: "Book Now", onPressed: () {}),
       ],
     );

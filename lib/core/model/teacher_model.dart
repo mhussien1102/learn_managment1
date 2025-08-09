@@ -10,6 +10,6 @@ class TeacherModel {
     required this.image,
     required this.specialist,
     required this.description,
-    this.facebookUrl,
+    this.facebookUrl = "www.google.com",
   });
 }
