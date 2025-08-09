@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import '../../../core/utils/app_routes.dart';
 import '../../../core/utils/assets.dart';
+import '../../../core/model/teacher_model.dart';
 
 class TeacherCard extends StatelessWidget {
-  const TeacherCard({super.key});
+  final TeacherModel teacher;
+  const TeacherCard({super.key, required this.teacher});
 
   @override
   Widget build(BuildContext context) {
@@ -10,17 +13,21 @@ class TeacherCard extends StatelessWidget {
     final isPhone = screen.width < 600;
 
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        Navigator.pushNamed(
+          context,
+          AppRoutes.teacherDetails,
+          arguments: teacher,
+        );
+      },
       child: LayoutBuilder(
         builder: (context, constraints) {
-          // Size coming from the Grid cell
           final w = constraints.maxWidth;
           final h =
               constraints.maxHeight.isFinite
                   ? constraints.maxHeight
                   : (isPhone ? screen.height * 0.36 : screen.height * 0.32);
 
-          // Scale UI with available space
           double clamp(num v, num min, num max) =>
               v < min
                   ? min.toDouble()
@@ -29,13 +36,9 @@ class TeacherCard extends StatelessWidget {
           final corner = clamp(w * 0.03, 10, 14);
           final elevation = isPhone ? 3.0 : 4.0;
           final padding = clamp(w * 0.06, 10, 18);
-
-          // Font sizes scale with width
           final titleSize = clamp(w * 0.085, 15, 20);
           final subtitleSize = clamp(w * 0.07, 12, 16);
           final descSize = clamp(w * 0.06, 11, 14);
-
-          // Image takes a portion of available height (works in any grid size)
           final imageHeight = clamp(h * 0.45, 160, 260);
 
           return Card(
@@ -46,15 +49,15 @@ class TeacherCard extends StatelessWidget {
             clipBehavior: Clip.hardEdge,
             child: Column(
               children: [
-                // Top image
-                Image.asset(
-                  AssetImages.teacher,
-                  height: imageHeight,
-                  width: double.infinity,
-                  fit: BoxFit.cover,
+                Hero(
+                  tag: 'teacher-image-${teacher.name}',
+                  child: Image.asset(
+                    teacher.image, // AssetImages.teacher as default
+                    height: imageHeight,
+                    width: double.infinity,
+                    fit: BoxFit.cover,
+                  ),
                 ),
-
-                // Texts
                 Expanded(
                   child: Padding(
                     padding: EdgeInsets.all(padding),
@@ -62,7 +65,7 @@ class TeacherCard extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Text(
-                          "Mr.Ali Ahmed",
+                          teacher.name,
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
@@ -73,7 +76,7 @@ class TeacherCard extends StatelessWidget {
                         ),
                         const SizedBox(height: 4),
                         Text(
-                          "Science",
+                          teacher.specialist,
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
@@ -85,8 +88,8 @@ class TeacherCard extends StatelessWidget {
                         const SizedBox(height: 6),
                         Expanded(
                           child: Text(
-                            "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
-                            maxLines: 1,
+                            teacher.description,
+                            maxLines: 3,
                             overflow: TextOverflow.ellipsis,
                             style: TextStyle(
                               fontSize: descSize,
