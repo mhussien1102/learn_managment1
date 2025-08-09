@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:learn_managment1/core/widgets/custom_button.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../core/model/teacher_model.dart';
 import '../../core/utils/constants.dart';
@@ -118,7 +119,6 @@ class _DetailsContent extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 12),
-
         InkWell(
           onTap: () {
             teacher.facebookUrl != null
@@ -137,6 +137,7 @@ class _DetailsContent extends StatelessWidget {
             ],
           ),
         ),
+        CustomButton(text: "Book Now", onPressed: () {}),
       ],
     );
   }
