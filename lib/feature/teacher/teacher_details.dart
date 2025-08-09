@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../../core/model/teacher_model.dart';
 import '../../core/utils/constants.dart';
 
@@ -15,11 +17,11 @@ class TeacherDetails extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           teacher.name,
-          style: TextStyle(color: Colors.white, fontSize: 24),
+          style: const TextStyle(color: Colors.white, fontSize: 24),
         ),
         centerTitle: true,
         backgroundColor: primaryColor,
-        iconTheme: IconThemeData(color: Colors.white),
+        iconTheme: const IconThemeData(color: Colors.white),
       ),
       body: SingleChildScrollView(
         padding: EdgeInsets.symmetric(
@@ -115,7 +117,34 @@ class _DetailsContent extends StatelessWidget {
             color: Colors.grey[800],
           ),
         ),
+        const SizedBox(height: 12),
+
+        InkWell(
+          onTap: () {
+            teacher.facebookUrl != null
+                ? () => _launchURL(teacher.facebookUrl!)
+                : null;
+          },
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              FaIcon(FontAwesomeIcons.facebook, color: Colors.blue, size: 20),
+              const SizedBox(width: 6),
+              Text(
+                "Facebook",
+                style: TextStyle(color: Colors.blue, fontSize: bodySize),
+              ),
+            ],
+          ),
+        ),
       ],
     );
+  }
+
+  Future<void> _launchURL(String url) async {
+    final Uri uri = Uri.parse(url);
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri, mode: LaunchMode.externalApplication);
+    }
   }
 }
