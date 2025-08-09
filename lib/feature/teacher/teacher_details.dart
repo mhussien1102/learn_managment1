@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../core/model/teacher_model.dart';
+import '../../core/utils/constants.dart';
 
 class TeacherDetails extends StatelessWidget {
   final TeacherModel teacher;
@@ -11,7 +12,15 @@ class TeacherDetails extends StatelessWidget {
     final isWide = size.width >= 800;
 
     return Scaffold(
-      appBar: AppBar(title: Text(teacher.name), centerTitle: true),
+      appBar: AppBar(
+        title: Text(
+          teacher.name,
+          style: TextStyle(color: Colors.white, fontSize: 24),
+        ),
+        centerTitle: true,
+        backgroundColor: primaryColor,
+        iconTheme: IconThemeData(color: Colors.white),
+      ),
       body: SingleChildScrollView(
         padding: EdgeInsets.symmetric(
           horizontal: (size.width * 0.06).clamp(16, 32).toDouble(),
@@ -30,7 +39,7 @@ class TeacherDetails extends StatelessWidget {
                           borderRadius: BorderRadius.circular(16),
                           child: Image.asset(
                             teacher.image,
-                            height: size.height * 0.5,
+                            height: size.height * 0.6,
                             fit: BoxFit.cover,
                           ),
                         ),
@@ -49,7 +58,7 @@ class TeacherDetails extends StatelessWidget {
                         borderRadius: BorderRadius.circular(16),
                         child: Image.asset(
                           teacher.image,
-                          height: size.height * 0.32,
+                          height: size.height * 0.5,
                           fit: BoxFit.cover,
                         ),
                       ),
