@@ -10,6 +10,7 @@ import 'package:learn_managment1/feature/teacher/teacher_details.dart';
 import '../../feature/ecommerce/cart_screen.dart';
 import '../../feature/ecommerce/deatils_screen.dart';
 import '../../feature/ecommerce/payment_screen.dart';
+import '../../feature/teacher/book_appointment.dart';
 import '../../feature/teacher/teacher.dart';
 import '../model/product_model.dart';
 import '../model/teacher_model.dart';
@@ -26,6 +27,7 @@ class AppRoutes {
   static const String payment = '/payment';
   static const String teacher = '/teacher';
   static const String teacherDetails = '/teacher_details';
+  static const String bookAppointment = '/book_appointment';
 
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -42,6 +44,9 @@ class AppRoutes {
 
       case otp:
         return MaterialPageRoute(builder: (_) => const OtpScreen());
+
+      case bookAppointment:
+        return MaterialPageRoute(builder: (_) => const BookAppointment());
 
       case teacherDetails:
         final model = settings.arguments as TeacherModel;

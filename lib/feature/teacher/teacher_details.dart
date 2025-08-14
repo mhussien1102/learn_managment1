@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:learn_managment1/core/widgets/custom_button.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../core/model/teacher_model.dart';
+import '../../core/utils/app_routes.dart';
 import '../../core/utils/constants.dart';
 
 class TeacherDetails extends StatelessWidget {
@@ -138,7 +139,12 @@ class _DetailsContent extends StatelessWidget {
           ),
         ),
         SizedBox(height: MediaQuery.of(context).size.height * 0.06),
-        CustomButton(text: "Book Now", onPressed: () {}),
+        CustomButton(
+          text: "Book Now",
+          onPressed: () {
+            Navigator.pushNamed(context, AppRoutes.bookAppointment);
+          },
+        ),
       ],
     );
   }
