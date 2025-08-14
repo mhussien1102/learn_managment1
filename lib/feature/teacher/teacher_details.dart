@@ -120,6 +120,8 @@ class _DetailsContent extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 12),
+        Text("${teacher.priceOfSession} in on Session"),
+        const SizedBox(height: 12),
         InkWell(
           onTap: () {
             teacher.facebookUrl != null
@@ -142,7 +144,11 @@ class _DetailsContent extends StatelessWidget {
         CustomButton(
           text: "Book Now",
           onPressed: () {
-            Navigator.pushNamed(context, AppRoutes.bookAppointment);
+            Navigator.pushNamed(
+              context,
+              AppRoutes.bookAppointment,
+              arguments: teacher,
+            );
           },
         ),
       ],

@@ -46,7 +46,10 @@ class AppRoutes {
         return MaterialPageRoute(builder: (_) => const OtpScreen());
 
       case bookAppointment:
-        return MaterialPageRoute(builder: (_) => const BookAppointment());
+        final model = settings.arguments as TeacherModel;
+        return MaterialPageRoute(
+          builder: (_) => BookAppointment(teacher: model),
+        );
 
       case teacherDetails:
         final model = settings.arguments as TeacherModel;
