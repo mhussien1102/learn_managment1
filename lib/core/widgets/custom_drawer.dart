@@ -34,7 +34,7 @@ class CustomDrawer extends StatelessWidget {
             },
           ),
           ListTile(leading: Icon(Icons.person), title: Text('Profile')),
-          ListTile(leading: Icon(Icons.settings), title: Text('Settings')),
+          ListTile(leading: Icon(Icons.logout), title: Text('Logout')),
         ],
       ),
     );
