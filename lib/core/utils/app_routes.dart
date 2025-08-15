@@ -10,6 +10,7 @@ import 'package:learn_managment1/feature/teacher/teacher_details.dart';
 import '../../feature/ecommerce/cart_screen.dart';
 import '../../feature/ecommerce/deatils_screen.dart';
 import '../../feature/ecommerce/payment_screen.dart';
+import '../../feature/profile/profile_screen.dart';
 import '../../feature/teacher/book_appointment.dart';
 import '../../feature/teacher/teacher.dart';
 import '../model/product_model.dart';
@@ -28,6 +29,7 @@ class AppRoutes {
   static const String teacher = '/teacher';
   static const String teacherDetails = '/teacher_details';
   static const String bookAppointment = '/book_appointment';
+  static const String profileScreen = '/profile_screen';
 
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -36,6 +38,8 @@ class AppRoutes {
 
       case forget:
         return MaterialPageRoute(builder: (_) => ForgetPassword());
+      case profileScreen:
+        return MaterialPageRoute(builder: (_) => const ProfileScreen());
 
       case login:
         return MaterialPageRoute(builder: (_) => const LoginScreen());

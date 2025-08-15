@@ -33,8 +33,18 @@ class CustomDrawer extends StatelessWidget {
               Navigator.pushNamed(context, AppRoutes.teacher);
             },
           ),
-          ListTile(leading: Icon(Icons.person), title: Text('Profile')),
-          ListTile(leading: Icon(Icons.logout), title: Text('Logout')),
+          ListTile(
+            leading: Icon(Icons.person),
+            title: Text('Profile'),
+            onTap: () {
+              Navigator.pushNamed(context, AppRoutes.profileScreen);
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.logout),
+            title: Text('Logout'),
+            onTap: () {},
+          ),
         ],
       ),
     );
