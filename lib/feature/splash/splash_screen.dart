@@ -71,7 +71,7 @@ class _SplashScreenState extends State<SplashScreen>
               SlideTransition(
                 position: _logoAnimation,
                 child: Image.asset(
-                  Assets.logo,
+                  Assets.logo, 
                   width: size.width * 0.5,
                   color: Colors.white,
                 ),
